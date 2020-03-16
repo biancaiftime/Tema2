@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Tema2</string>
+    <string name="AddUser">Add user</string>
+    <string name="DeleteUser">Delete user</string>
+    <string name="FullName">Full Name</string>
+    <string name="Mark">Mark</string>
 </resources>
