@@ -19,7 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class ListOfUsersAdapter extends RecyclerView.Adapter<ListOfUsersAdapter.ViewHolder> {
 
-    public List<User> mDataset;
+    private List<User> mDataset;
 
     public ListOfUsersAdapter(List<User> users)
     {
@@ -59,6 +59,25 @@ public class ListOfUsersAdapter extends RecyclerView.Adapter<ListOfUsersAdapter.
             super(vCard);
             fullName = vCard.findViewById(R.id.List_FullName);
             mark = vCard.findViewById(R.id.List_Mark);
+        }
+    }
+
+    public void addItem(User user)
+    {
+        mDataset.add(user);
+        notifyDataSetChanged();
+    }
+
+    public void deleteItem(User user)
+    {
+        for (User u : mDataset)
+        {
+            if(u.fullName.equals(user.fullName))
+            {
+                mDataset.remove(u);
+                notifyDataSetChanged();
+                break;
+            }
         }
     }
 }

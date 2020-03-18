@@ -60,8 +60,7 @@ public class MainActivity extends Activity {
         public void onClick(View v) {
             User user = new User(fullName.getText().toString(), new Float(mark.getText().toString()));
             userRepository.insertTask(user, new OnUserRepositoryListener());
-            ((ListOfUsersAdapter)adapter).mDataset.add(user);
-            adapter.notifyDataSetChanged();
+            ((ListOfUsersAdapter)adapter).addItem(user);
         }
     }
 
@@ -75,15 +74,7 @@ public class MainActivity extends Activity {
                 toast.show();
             }
             else {
-                for (User u : ((ListOfUsersAdapter) adapter).mDataset)
-                {
-                    if(u.fullName.equals(user.fullName))
-                    {
-                        ((ListOfUsersAdapter) adapter).mDataset.remove(u);
-                        adapter.notifyDataSetChanged();
-                        break;
-                    }
-                }
+                ((ListOfUsersAdapter) adapter).deleteItem(user);
                 userRepository.deleteTask(user, new OnUserRepositoryListener());
             }
         }
